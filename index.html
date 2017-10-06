@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Hello World!</title>
+  </head>
+  <body>
+    <h1>Hello World!</h1>
+    <!-- All of the Node.js APIs are available in this renderer process. -->
+    We are using Node.js <script>document.write(process.versions.node)</script>,
+    Chromium <script>document.write(process.versions.chrome)</script>,
+    and Electron <script>document.write(process.versions.electron)</script>.
+
+    <form name="myForm">
+        contact point <input type="text" name="contactpoint">
+        <br />
+        port <input type="text" name="port">
+        <br />
+        keyspace <input type="text" name="keyspace">
+        <br />
+        query <textarea name="query" rows="10" cols="20"></textarea>
+
+        <br />
+        <button type="button" onclick="return makeQuery();">QUERY</button>
+
+        <div id="result"></div>
+    </form>
+
+    <!-- <script>
+      // You can also require other files to run in this process
+      require('./renderer.js')
+    </script> -->
+    <script src="./renderer.js"></script>
+  </body>
+</html>

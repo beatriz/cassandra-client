@@ -37,13 +37,38 @@ function makeQuery () {
 function writeResults (res) {
   let print = ''
   if (res.rows) {
-    for (let i = 0; i < res.rows.length; i++) {
-      let columnName = res.columns[1].name
-      print += res.rows[i][columnName] + '\n'
-    }
+    print = createTable(res)
   } else {
     print = res.wasApplied ? 'applied' : 'not applied'
   }
 
-  result.innerText = print
+  result.innerHTML = print
+}
+
+function createTable (res) {
+  return `<table class="table table-striped">
+    ${createTableHead(res)}
+    ${createTableBody(res)}
+  </table>`
+}
+
+function createTableHead (res) {
+  let head = '<thead><tr>'
+  for (let i = 0; i < res.columns.length; i++) {
+    head += `<th>${res.columns[i].name}</th>`
+  }
+
+  return head + '</tr></thead>'
+}
+
+function createTableBody (res) {
+  let body = '<tbody>'
+  for (let row = 0; row < res.rows.length; row++) {
+    body += '<tr>'
+    for (let cell = 0; cell < res.columns.length; cell++) {
+      body += `<td>${res.rows[row][res.columns[cell].name]}</td>`
+    }
+    body += '</tr>'
+  }
+  return body + '</tbody>'
 }

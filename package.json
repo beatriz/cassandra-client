@@ -1,6 +1,9 @@
 {
     "name": "cassandra-client",
     "version": "0.1.0",
+    "productName": "cassandra-client",
+    "author": "Beatriz Magalhães",
+    "description": "A desktop Cassandra client",
     "main": "main.js",
     "scripts": {
         "start": "electron .",

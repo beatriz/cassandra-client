@@ -22,6 +22,24 @@ store.get('connection', (err, data) => {
   keyspace.value = data.keyspace
 })
 
+function connect() {
+  const client = new cassandra.Client({
+    contactPoints: contactPoints.value.split(','),
+    protocolOptions: { port: port.value }
+  })
+
+  client.connect((err) => {
+    if (err) {
+      result.innerText = err
+    }
+
+    result.innerText = 'connected successfully'
+  })
+
+//   client.execute('SELECT * FROM system_schema.keyspaces')
+//     .then(res => { for (let i = 0; i < res.rows.length; i++) { result.innerText += res.rows[i].keyspace_name } })
+}
+
 function makeQuery () {
   const client = new cassandra.Client({
     contactPoints: contactPoints.value.split(','),

@@ -11,7 +11,7 @@
       <div class="row">
         <div class="col mr-auto">
             <h1>Cassandra Client</h1>
-            <form name="myForm">
+            <form id="connection">
               <div class="form-group">
                 <label for="contactpoint">Contact points: </label>
                 <input type="text" class="form-control" name="contactpoint">
@@ -41,7 +41,7 @@
       </div>
     </div>
 
-    <script src="./src/renderer.js"></script>
+    <script src="./renderer.js"></script>
     <script> // https://stackoverflow.com/questions/41340580/jquery-not-loading-when-it-is-included-before-other-javascript-files
       if (typeof module === 'object') {
           window.module = module; 

@@ -4,7 +4,7 @@
     "productName": "cassandra-client",
     "author": "Beatriz Magalhães",
     "description": "A desktop Cassandra client",
-    "main": "src/main.js",
+    "main": "app/main.js",
     "scripts": {
         "start": "electron .",
         "test": "standard",

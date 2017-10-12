@@ -12,6 +12,10 @@
         "sourceMap": true,
         "skipLibCheck": true,
         "allowJs": true,
-        "jsx": "preserve"
+        "jsx": "preserve",
+        "typeRoots": [
+            "./node_modules/@types",
+            "./types/"
+        ]
     }
 }

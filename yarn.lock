@@ -2,20 +2,9 @@
 # yarn lockfile v1
 
 
-"@types/cassandra-driver@^3.2.1":
-  version "3.2.1"
-  resolved "https://registry.yarnpkg.com/@types/cassandra-driver/-/cassandra-driver-3.2.1.tgz#a3a8926cd17cb07fa0e7fcb8a1a486d637a05ae4"
-  dependencies:
-    "@types/long" "*"
-    "@types/node" "*"
-
 "@types/jest@^21.1.2":
   version "21.1.2"
   resolved "https://registry.yarnpkg.com/@types/jest/-/jest-21.1.2.tgz#05ebfa64817b626694ced56745a7949281981048"
-
-"@types/long@*":
-  version "3.0.32"
-  resolved "https://registry.yarnpkg.com/@types/long/-/long-3.0.32.tgz#f4e5af31e9e9b196d8e5fca8a5e2e20aa3d60b69"
 
 "@types/node@*":
   version "8.0.34"
@@ -4535,6 +4524,10 @@ yargs@~3.10.0:
     cliui "^2.1.0"
     decamelize "^1.0.0"
     window-size "0.1.0"
+
+yarn@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/yarn/-/yarn-1.2.0.tgz#c5004499eb6dc7ecdd0f93743f463bbc5998324c"
 
 yauzl@2.4.1:
   version "2.4.1"

@@ -1,24 +1,2 @@
 <testsuites name="jest tests">
-  <testsuite name="/__tests__/host_tests.js" tests="1" errors="0" failures="0" skipped="0" timestamp="2017-10-10T21:05:11" time="0.427">
-    <testcase classname="Host-PlaceHolderPassingTest" name="Host-PlaceHolderPassingTest" time="0.004">
-    </testcase>
-  </testsuite>
-  <testsuite name="/__tests__/gui_tests.js" tests="1" errors="0" failures="1" skipped="0" timestamp="2017-10-10T21:05:11" time="0.43">
-    <testcase classname="GUI-PlaceHolderFailingTest" name="GUI-PlaceHolderFailingTest" time="0.006">
-      <failure>Error: expect(received).toBe(expected)
-
-Expected value to be (using ===):
-  4
-Received:
-  3
-    at Object.test (/Users/bmagalhaes/dev/myelectronapp/__tests__/gui_tests.js:76:27)
-    at Object.asyncFn (/Users/bmagalhaes/dev/myelectronapp/node_modules/jest-jasmine2/build/jasmine_async.js:124:345)
-    at resolve (/Users/bmagalhaes/dev/myelectronapp/node_modules/jest-jasmine2/build/queue_runner.js:46:12)
-    at Promise (&lt;anonymous&gt;)
-    at mapper (/Users/bmagalhaes/dev/myelectronapp/node_modules/jest-jasmine2/build/queue_runner.js:34:499)
-    at promise.then (/Users/bmagalhaes/dev/myelectronapp/node_modules/jest-jasmine2/build/queue_runner.js:74:39)
-    at &lt;anonymous&gt;
-    at process._tickCallback (internal/process/next_tick.js:188:7)</failure>
-    </testcase>
-  </testsuite>
 </testsuites>

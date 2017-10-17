@@ -1,6 +1,7 @@
 
 const initialState = {
   connected: false,
+  isConnecting: false,
   connectionError: ''
 }
 
@@ -9,14 +10,22 @@ export function ConnectionReducer(state = initialState, action) {
   case 'CONNECTION_SUCCESS':
     return {
       ...state,
-      connected: true
+      connected: true,
+      isConnecting: false
     }
 
   case 'CONNECTION_ERROR':
     return {
       ...state,
       connected: false,
+      isConnecting: false,
       connectionError: action.error
+    }
+  case 'CONNECT':
+    return {
+      ...state,
+      connected: false,
+      isConnecting: true
     }
   default:
     return state

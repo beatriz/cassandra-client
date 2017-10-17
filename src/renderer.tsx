@@ -5,7 +5,9 @@ import { createStore } from 'redux'
 import cassandraApp from './reducers'
 import App from './components/App'
 
-let store = createStore(cassandraApp)
+const extension = (window as any).__REDUX_DEVTOOLS_EXTENSION__
+
+let store = createStore(cassandraApp, extension && extension())
 
 render(
   <Provider store={store}>

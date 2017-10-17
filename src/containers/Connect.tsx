@@ -4,8 +4,8 @@ import { ConnectComponent } from '../components/connectComponent'
 
 const mapStateToProps = state => {
   return {
-    connected: state.connected,
-    errorMsg: state.connectionError
+    connected: state.connection.connected,
+    errorMsg: state.connection.connectionError
   }
 }
 

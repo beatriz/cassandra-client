@@ -1862,7 +1862,8 @@ var _App2 = _interopRequireDefault(_App);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-let store = (0, _redux.createStore)(_reducers2.default);
+const extension = window.__REDUX_DEVTOOLS_EXTENSION__;
+let store = (0, _redux.createStore)(_reducers2.default, extension && extension());
 (0, _reactDom.render)(_react2.default.createElement(
     _reactRedux.Provider,
     { store: store },
@@ -11738,14 +11739,16 @@ function verifySubselectors(mapStateToProps, mapDispatchToProps, mergeProps, dis
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
 
 var _redux = __webpack_require__(11);
 
 var _cassandra = __webpack_require__(70);
 
-const cassandraApp = (0, _redux.combineReducers)({ ConnectionReducer: _cassandra.ConnectionReducer });
+const cassandraApp = (0, _redux.combineReducers)({
+    connection: _cassandra.ConnectionReducer
+});
 exports.default = cassandraApp;
 
 /***/ }),
@@ -11821,8 +11824,8 @@ var _connectComponent = __webpack_require__(74);
 
 const mapStateToProps = state => {
     return {
-        connected: state.connected,
-        errorMsg: state.connectionError
+        connected: state.connection.connected,
+        errorMsg: state.connection.connectionError
     };
 };
 const mapDispatchToProps = dispatch => {
@@ -11887,7 +11890,7 @@ class ConnectComponent extends _react2.default.Component {
             { className: 'connectComponent' },
             _react2.default.createElement(
                 'button',
-                { type: 'button', onClick: this.props.onConnectClick() },
+                { type: 'button', onClick: this.props.onConnectClick },
                 'Connect'
             ),
             _react2.default.createElement(
@@ -11902,3 +11905,4 @@ exports.ConnectComponent = ConnectComponent;
 
 /***/ })
 /******/ ]);
+//# sourceMappingURL=renderer.js.map

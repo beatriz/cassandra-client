@@ -1,4 +1,4 @@
-
+// https://github.com/Microsoft/TypeScript-React-Starter/tree/master/src/reducers
 const initialState = {
   connected: false,
   isConnecting: false,

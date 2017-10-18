@@ -20755,8 +20755,8 @@ const mapStateToProps = state => {
 };
 const mapDispatchToProps = dispatch => {
     return {
-        onConnectClick: () => {
-            dispatch((0, _renderer.doConnect)('localhost', 3769));
+        onConnectClick: (contactPoints, port) => {
+            dispatch((0, _renderer.doConnect)(contactPoints, port));
         }
     };
 };
@@ -20805,6 +20805,8 @@ const connect = exports.connect = () => {
 function doConnect(contactPoints, port) {
     return function (dispatch) {
         dispatch(connect());
+        // cassandra library that returns a promise
+        // and here I do an async await
         const client = new cassandra.Client({
             contactPoints: contactPoints.split(','),
             protocolOptions: { port: port }
@@ -31246,20 +31248,43 @@ var _react2 = _interopRequireDefault(_react);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 class ConnectComponent extends _react2.default.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            contactPoints: '',
+            port: 0
+        };
+        this.handleInputChange = this.handleInputChange.bind(this);
+        this.handleClick = this.handleClick.bind(this);
+    }
+    handleInputChange(e) {
+        this.setState({
+            [e.target.name]: e.target.value
+        });
+    }
+    handleClick() {
+        this.props.onConnectClick(this.state.contactPoints, this.state.port);
+    }
     render() {
         const className = this.props.isConnecting ? 'text-warning' : this.props.connected ? 'text-success' : 'text-danger';
         return _react2.default.createElement(
             'div',
             { className: 'connectComponent' },
             _react2.default.createElement(
-                'button',
-                { type: 'button', onClick: this.props.onConnectClick },
-                'Connect'
-            ),
-            _react2.default.createElement(
-                'div',
-                { className: className },
-                this.props.isConnecting ? 'connecting' : this.props.connected ? 'Connected' : this.props.errorMsg
+                'form',
+                null,
+                _react2.default.createElement('input', { name: 'contactPoints', type: 'text', onChange: this.handleInputChange, value: this.state.contactPoints }),
+                _react2.default.createElement('input', { name: 'port', type: 'text', onChange: this.handleInputChange, value: this.state.port }),
+                _react2.default.createElement(
+                    'button',
+                    { type: 'button', onClick: this.handleClick },
+                    'Connect'
+                ),
+                _react2.default.createElement(
+                    'div',
+                    { className: className },
+                    this.props.isConnecting ? 'connecting' : this.props.connected ? 'Connected' : this.props.errorMsg
+                )
             )
         );
     }

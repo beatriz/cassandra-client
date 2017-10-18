@@ -12,8 +12,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onConnectClick: () => {
-      dispatch(doConnect('localhost', 3769))
+    onConnectClick: (contactPoints, port) => {
+      dispatch(doConnect(contactPoints, port))
     }
   }
 }

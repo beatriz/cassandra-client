@@ -1,23 +1,35 @@
 import * as cassandra from 'cassandra-driver'
+import * as constants from '../constants'
 
-export enum TypesEnum {
-  CONNECT
+export interface ConnectionSuccess {
+  type: constants.CONNECTION_SUCCESS
 }
 
-export const connectionSuccess = () => {
+export interface ConnectionError {
+  type: constants.CONNECTION_ERROR
+  error: string
+}
+
+export interface Connect {
+  type: constants.CONNECT
+}
+
+export type Actions = ConnectionSuccess | ConnectionError | Connect
+
+export function connectionSuccess(): ConnectionSuccess {
   return {
     type: 'CONNECTION_SUCCESS'
   }
 }
 
-export const connectionError = error => {
+export function connectionError(error: string): ConnectionError {
   return {
     type: 'CONNECTION_ERROR',
     error: error
   }
 }
 
-export const connect = () => {
+export function connect(): Connect {
   return {
     type: 'CONNECT'
   }

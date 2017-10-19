@@ -1,27 +1,35 @@
-// https://github.com/Microsoft/TypeScript-React-Starter/tree/master/src/reducers
-const initialState = {
+import { Action } from '../actions/renderer'
+import * as Types from '../constants/index'
+
+export interface State {
+  connected: boolean
+  isConnecting: boolean
+  connectionError: string
+}
+
+const initialState: State = {
   connected: false,
   isConnecting: false,
   connectionError: ''
 }
 
-export function ConnectionReducer(state = initialState, action) {
+export function ConnectionReducer(state: State = initialState, action: Action): State {
   switch (action.type) {
-  case 'CONNECTION_SUCCESS':
+  case Types.CONNECTION_SUCCESS:
     return {
       ...state,
       connected: true,
       isConnecting: false
     }
 
-  case 'CONNECTION_ERROR':
+  case Types.CONNECTION_ERROR:
     return {
       ...state,
       connected: false,
       isConnecting: false,
       connectionError: action.error
     }
-  case 'CONNECT':
+  case Types.CONNECT:
     return {
       ...state,
       connected: false,

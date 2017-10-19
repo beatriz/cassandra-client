@@ -1,8 +1,9 @@
 import { connect } from 'react-redux'
-import { doConnect } from '../actions/renderer'
+import { doConnect, Action } from '../actions/renderer'
 import { ConnectComponent } from '../components/connectComponent'
+import { Dispatch } from 'redux'
 
-const mapStateToProps = (state) => {
+function mapStateToProps(state) {
   return {
     connected: state.connection.connected,
     errorMsg: state.connection.connectionError,
@@ -10,17 +11,13 @@ const mapStateToProps = (state) => {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
+function mapDispatchToProps(dispatch: Dispatch<Action>) {
   return {
-    onConnectClick: (contactPoints, port) => {
-      dispatch(doConnect(contactPoints, port))
-    }
+    onConnectClick: (contactPoints, port) => dispatch(doConnect(contactPoints, port))
   }
 }
 
-const ConnectContainer = connect(
+export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(ConnectComponent)
-
-export default ConnectContainer

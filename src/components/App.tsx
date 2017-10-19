@@ -1,10 +1,12 @@
 import React from 'react'
 import ConnectContainer from '../containers/Connect'
 
-const App = () => (
-  <div>
-    <ConnectContainer />
-  </div>
-)
-
-export default App
+export default class App extends React.Component {
+  render() {
+    return (
+      <div>
+        <ConnectContainer />
+      </div>
+    )
+  }
+}

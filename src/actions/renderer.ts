@@ -14,7 +14,7 @@ export interface Connect {
   type: constants.CONNECT
 }
 
-export type Actions = ConnectionSuccess | ConnectionError | Connect
+export type Action = ConnectionSuccess | ConnectionError | Connect
 
 export function connectionSuccess(): ConnectionSuccess {
   return {

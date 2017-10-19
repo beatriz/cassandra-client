@@ -1000,9 +1000,9 @@ exports.HashSet = HashSet;
 var util = __webpack_require__(0);
 
 var errors = __webpack_require__(3);
-var TimeUuid = __webpack_require__(104);
+var TimeUuid = __webpack_require__(105);
 var Uuid = __webpack_require__(38);
-var protocolVersion = __webpack_require__(105);
+var protocolVersion = __webpack_require__(106);
 var utils = __webpack_require__(1);
 
 /** @module types */
@@ -1545,22 +1545,22 @@ exports.responseErrorCodes = responseErrorCodes;
 exports.resultKind = resultKind;
 exports.timeuuid = timeuuid;
 exports.uuid = uuid;
-exports.BigDecimal = __webpack_require__(106);
-exports.Duration = __webpack_require__(107);
+exports.BigDecimal = __webpack_require__(107);
+exports.Duration = __webpack_require__(108);
 exports.FrameHeader = FrameHeader;
-exports.InetAddress = __webpack_require__(108);
+exports.InetAddress = __webpack_require__(109);
 exports.Integer = __webpack_require__(39);
-exports.LocalDate = __webpack_require__(109);
-exports.LocalTime = __webpack_require__(110);
+exports.LocalDate = __webpack_require__(110);
+exports.LocalTime = __webpack_require__(111);
 exports.Long = Long;
-exports.ResultSet = __webpack_require__(111);
-exports.ResultStream = __webpack_require__(112);
-exports.Row = __webpack_require__(113);
+exports.ResultSet = __webpack_require__(112);
+exports.ResultStream = __webpack_require__(113);
+exports.Row = __webpack_require__(114);
 //export DriverError for backward-compatibility
 exports.DriverError = errors.DriverError;
 exports.TimeoutError = TimeoutError;
 exports.TimeUuid = TimeUuid;
-exports.Tuple = __webpack_require__(114);
+exports.Tuple = __webpack_require__(115);
 exports.Uuid = Uuid;
 exports.unset = unset;
 exports.generateTimestamp = generateTimestamp;
@@ -5166,12 +5166,12 @@ function verifyPlainObject(value, displayName, methodName) {
  * @module policies
  */
 
-var addressResolution = exports.addressResolution = __webpack_require__(102);
-var loadBalancing = exports.loadBalancing = __webpack_require__(103);
-var reconnection = exports.reconnection = __webpack_require__(115);
+var addressResolution = exports.addressResolution = __webpack_require__(103);
+var loadBalancing = exports.loadBalancing = __webpack_require__(104);
+var reconnection = exports.reconnection = __webpack_require__(116);
 var retry = exports.retry = __webpack_require__(41);
-var speculativeExecution = exports.speculativeExecution = __webpack_require__(116);
-var timestampGeneration = exports.timestampGeneration = __webpack_require__(117);
+var speculativeExecution = exports.speculativeExecution = __webpack_require__(117);
+var timestampGeneration = exports.timestampGeneration = __webpack_require__(118);
 
 /**
  * Returns a new instance of the default address translator policy used by the driver.
@@ -6426,7 +6426,7 @@ var events = __webpack_require__(4);
 
 var utils = __webpack_require__(1);
 var types = __webpack_require__(2);
-var HostConnectionPool = __webpack_require__(120);
+var HostConnectionPool = __webpack_require__(121);
 var PrepareHandler = __webpack_require__(46);
 
 /**
@@ -8936,7 +8936,7 @@ var util = __webpack_require__(0);
 var errors = __webpack_require__(3);
 var types = __webpack_require__(2);
 var utils = __webpack_require__(1);
-var RequestExecution = __webpack_require__(127);
+var RequestExecution = __webpack_require__(128);
 
 /**
  * Handles a request to Cassandra, dealing with host fail-over and retries on error
@@ -9188,12 +9188,12 @@ var util = __webpack_require__(0);
  * Module containing classes and fields related to metadata.
  * @module metadata
  */
-var t = __webpack_require__(128);
+var t = __webpack_require__(129);
 var utils = __webpack_require__(1);
 var errors = __webpack_require__(3);
 var types = __webpack_require__(2);
 var requests = __webpack_require__(8);
-var schemaParserFactory = __webpack_require__(130);
+var schemaParserFactory = __webpack_require__(131);
 
 /**
  * @const
@@ -10472,7 +10472,7 @@ var _reducers = __webpack_require__(96);
 
 var _reducers2 = _interopRequireDefault(_reducers);
 
-var _App = __webpack_require__(98);
+var _App = __webpack_require__(99);
 
 var _App2 = _interopRequireDefault(_App);
 
@@ -20683,6 +20683,13 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 exports.ConnectionReducer = ConnectionReducer;
+
+var _index = __webpack_require__(98);
+
+var Types = _interopRequireWildcard(_index);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
 const initialState = {
     connected: false,
     isConnecting: false,
@@ -20690,11 +20697,11 @@ const initialState = {
 };
 function ConnectionReducer(state = initialState, action) {
     switch (action.type) {
-        case 'CONNECTION_SUCCESS':
+        case Types.CONNECTION_SUCCESS:
             return Object.assign({}, state, { connected: true, isConnecting: false });
-        case 'CONNECTION_ERROR':
+        case Types.CONNECTION_ERROR:
             return Object.assign({}, state, { connected: false, isConnecting: false, connectionError: action.error });
-        case 'CONNECT':
+        case Types.CONNECT:
             return Object.assign({}, state, { connected: false, isConnecting: true });
         default:
             return state;
@@ -20709,25 +20716,11 @@ function ConnectionReducer(state = initialState, action) {
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
-
-var _react = __webpack_require__(6);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _Connect = __webpack_require__(99);
-
-var _Connect2 = _interopRequireDefault(_Connect);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-const App = () => _react2.default.createElement(
-    'div',
-    null,
-    _react2.default.createElement(_Connect2.default, null)
-);
-exports.default = App;
+const CONNECTION_SUCCESS = exports.CONNECTION_SUCCESS = 'CONNECTION_SUCCESS';
+const CONNECTION_ERROR = exports.CONNECTION_ERROR = 'CONNECTION_ERROR';
+const CONNECT = exports.CONNECT = 'CONNECT';
 
 /***/ }),
 /* 99 */
@@ -20740,28 +20733,26 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _reactRedux = __webpack_require__(27);
+var _react = __webpack_require__(6);
 
-var _renderer = __webpack_require__(100);
+var _react2 = _interopRequireDefault(_react);
 
-var _connectComponent = __webpack_require__(141);
+var _Connect = __webpack_require__(100);
 
-const mapStateToProps = state => {
-    return {
-        connected: state.connection.connected,
-        errorMsg: state.connection.connectionError,
-        isConnecting: state.connection.isConnecting
-    };
-};
-const mapDispatchToProps = dispatch => {
-    return {
-        onConnectClick: (contactPoints, port) => {
-            dispatch((0, _renderer.doConnect)(contactPoints, port));
-        }
-    };
-};
-const ConnectContainer = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_connectComponent.ConnectComponent);
-exports.default = ConnectContainer;
+var _Connect2 = _interopRequireDefault(_Connect);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+class App extends _react2.default.Component {
+    render() {
+        return _react2.default.createElement(
+            'div',
+            null,
+            _react2.default.createElement(_Connect2.default, null)
+        );
+    }
+}
+exports.default = App;
 
 /***/ }),
 /* 100 */
@@ -20773,35 +20764,64 @@ exports.default = ConnectContainer;
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.connect = exports.connectionError = exports.connectionSuccess = exports.TypesEnum = undefined;
+
+var _reactRedux = __webpack_require__(27);
+
+var _renderer = __webpack_require__(101);
+
+var _connectComponent = __webpack_require__(142);
+
+function mapStateToProps(state) {
+    return {
+        connected: state.connection.connected,
+        errorMsg: state.connection.connectionError,
+        isConnecting: state.connection.isConnecting
+    };
+}
+function mapDispatchToProps(dispatch) {
+    return {
+        onConnectClick: (contactPoints, port) => dispatch((0, _renderer.doConnect)(contactPoints, port))
+    };
+}
+exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_connectComponent.ConnectComponent);
+
+/***/ }),
+/* 101 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.connectionSuccess = connectionSuccess;
+exports.connectionError = connectionError;
+exports.connect = connect;
 exports.doConnect = doConnect;
 
-var _cassandraDriver = __webpack_require__(101);
+var _cassandraDriver = __webpack_require__(102);
 
 var cassandra = _interopRequireWildcard(_cassandraDriver);
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
-var TypesEnum = exports.TypesEnum = undefined;
-(function (TypesEnum) {
-    TypesEnum[TypesEnum["CONNECT"] = 0] = "CONNECT";
-})(TypesEnum || (exports.TypesEnum = TypesEnum = {}));
-const connectionSuccess = exports.connectionSuccess = () => {
+function connectionSuccess() {
     return {
         type: 'CONNECTION_SUCCESS'
     };
-};
-const connectionError = exports.connectionError = error => {
+}
+function connectionError(error) {
     return {
         type: 'CONNECTION_ERROR',
         error: error
     };
-};
-const connect = exports.connect = () => {
+}
+function connect() {
     return {
         type: 'CONNECT'
     };
-};
+}
 function doConnect(contactPoints, port) {
     return function (dispatch) {
         dispatch(connect());
@@ -20822,19 +20842,19 @@ function doConnect(contactPoints, port) {
 }
 
 /***/ }),
-/* 101 */
+/* 102 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var clientOptions = __webpack_require__(20);
-exports.Client = __webpack_require__(118);
+exports.Client = __webpack_require__(119);
 exports.ExecutionProfile = __webpack_require__(50).ExecutionProfile;
 exports.types = __webpack_require__(2);
 exports.errors = __webpack_require__(3);
 exports.policies = __webpack_require__(36);
-exports.auth = __webpack_require__(138);
+exports.auth = __webpack_require__(139);
 exports.metadata = {
   Metadata: __webpack_require__(48)
 };
@@ -20845,10 +20865,10 @@ exports.Encoder = __webpack_require__(44);
 exports.defaultOptions = function () {
   return clientOptions.defaultOptions();
 };
-exports.version = __webpack_require__(140).version;
+exports.version = __webpack_require__(141).version;
 
 /***/ }),
-/* 102 */
+/* 103 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20973,7 +20993,7 @@ exports.AddressTranslator = AddressTranslator;
 exports.EC2MultiRegionTranslator = EC2MultiRegionTranslator;
 
 /***/ }),
-/* 103 */
+/* 104 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21441,7 +21461,7 @@ exports.TokenAwarePolicy = TokenAwarePolicy;
 exports.WhiteListPolicy = WhiteListPolicy;
 
 /***/ }),
-/* 104 */
+/* 105 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21739,7 +21759,7 @@ function generateBuffer(date, ticks, nodeId, clockId) {
 module.exports = TimeUuid;
 
 /***/ }),
-/* 105 */
+/* 106 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21879,7 +21899,7 @@ var protocolVersion = {
 module.exports = protocolVersion;
 
 /***/ }),
-/* 106 */
+/* 107 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22133,7 +22153,7 @@ BigDecimal.prototype.toJSON = function () {
 module.exports = BigDecimal;
 
 /***/ }),
-/* 107 */
+/* 108 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22817,7 +22837,7 @@ var VIntCoding = function () {
 module.exports = Duration;
 
 /***/ }),
-/* 108 */
+/* 109 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23051,7 +23071,7 @@ function isValidIPv4Mapped(buffer) {
 module.exports = InetAddress;
 
 /***/ }),
-/* 109 */
+/* 110 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23314,7 +23334,7 @@ function fillZeros(value, amount) {
 module.exports = LocalDate;
 
 /***/ }),
-/* 110 */
+/* 111 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23615,7 +23635,7 @@ function formatTime(values) {
 module.exports = LocalTime;
 
 /***/ }),
-/* 111 */
+/* 112 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23782,7 +23802,7 @@ if (typeof Symbol !== 'undefined' && typeof Symbol.iterator === 'symbol') {
 module.exports = ResultSet;
 
 /***/ }),
-/* 112 */
+/* 113 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23842,7 +23862,7 @@ ResultStream.prototype.add = function (chunk) {
 module.exports = ResultStream;
 
 /***/ }),
-/* 113 */
+/* 114 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23914,7 +23934,7 @@ Row.prototype.forEach = function (callback) {
 module.exports = Row;
 
 /***/ }),
-/* 114 */
+/* 115 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24003,7 +24023,7 @@ Tuple.prototype.values = function () {
 module.exports = Tuple;
 
 /***/ }),
-/* 115 */
+/* 116 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24092,7 +24112,7 @@ exports.ConstantReconnectionPolicy = ConstantReconnectionPolicy;
 exports.ExponentialReconnectionPolicy = ExponentialReconnectionPolicy;
 
 /***/ }),
-/* 116 */
+/* 117 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24202,7 +24222,7 @@ exports.SpeculativeExecutionPolicy = SpeculativeExecutionPolicy;
 exports.ConstantSpeculativeExecutionPolicy = ConstantSpeculativeExecutionPolicy;
 
 /***/ }),
-/* 117 */
+/* 118 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24354,7 +24374,7 @@ exports.TimestampGenerator = TimestampGenerator;
 exports.MonotonicTimestampGenerator = MonotonicTimestampGenerator;
 
 /***/ }),
-/* 118 */
+/* 119 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24366,13 +24386,13 @@ var util = __webpack_require__(0);
 var utils = __webpack_require__(1);
 var errors = __webpack_require__(3);
 var types = __webpack_require__(2);
-var ControlConnection = __webpack_require__(119);
+var ControlConnection = __webpack_require__(120);
 var ProfileManager = __webpack_require__(50).ProfileManager;
 var RequestHandler = __webpack_require__(47);
 var PrepareHandler = __webpack_require__(46);
 var requests = __webpack_require__(8);
 var clientOptions = __webpack_require__(20);
-var ClientState = __webpack_require__(137);
+var ClientState = __webpack_require__(138);
 
 /**
  * Max amount of pools being warmup in parallel, when warmup is enabled
@@ -25391,7 +25411,7 @@ Client.prototype._setQueryOptions = function (options, params, meta, callback) {
 module.exports = Client;
 
 /***/ }),
-/* 119 */
+/* 120 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25406,7 +25426,7 @@ var errors = __webpack_require__(3);
 var Host = __webpack_require__(43).Host;
 var HostMap = __webpack_require__(43).HostMap;
 var Metadata = __webpack_require__(48);
-var EventDebouncer = __webpack_require__(136);
+var EventDebouncer = __webpack_require__(137);
 var requests = __webpack_require__(8);
 var utils = __webpack_require__(1);
 var types = __webpack_require__(2);
@@ -26187,7 +26207,7 @@ function resolveAll(name, callback) {
 module.exports = ControlConnection;
 
 /***/ }),
-/* 120 */
+/* 121 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -26196,7 +26216,7 @@ module.exports = ControlConnection;
 var util = __webpack_require__(0);
 var events = __webpack_require__(4);
 
-var Connection = __webpack_require__(121);
+var Connection = __webpack_require__(122);
 var utils = __webpack_require__(1);
 var defaultOptions = __webpack_require__(20).defaultOptions();
 
@@ -26608,7 +26628,7 @@ HostConnectionPool.prototype.log = utils.log;
 module.exports = HostConnectionPool;
 
 /***/ }),
-/* 121 */
+/* 122 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -26617,17 +26637,17 @@ module.exports = HostConnectionPool;
 var net = __webpack_require__(42);
 var events = __webpack_require__(4);
 var util = __webpack_require__(0);
-var tls = __webpack_require__(122);
+var tls = __webpack_require__(123);
 
 var Encoder = __webpack_require__(44);
 var WriteQueue = __webpack_require__(45).WriteQueue;
 var requests = __webpack_require__(8);
-var streams = __webpack_require__(123);
+var streams = __webpack_require__(124);
 var utils = __webpack_require__(1);
 var types = __webpack_require__(2);
 var errors = __webpack_require__(3);
-var StreamIdStack = __webpack_require__(125);
-var OperationState = __webpack_require__(126);
+var StreamIdStack = __webpack_require__(126);
+var OperationState = __webpack_require__(127);
 
 /**  @const */
 var idleQuery = 'SELECT key from system.local';
@@ -27228,13 +27248,13 @@ Connection.prototype.close = function (callback) {
 module.exports = Connection;
 
 /***/ }),
-/* 122 */
+/* 123 */
 /***/ (function(module, exports) {
 
 module.exports = require("tls");
 
 /***/ }),
-/* 123 */
+/* 124 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27249,7 +27269,7 @@ var types = __webpack_require__(2);
 var utils = __webpack_require__(1);
 var errors = __webpack_require__(3);
 var FrameHeader = types.FrameHeader;
-var FrameReader = __webpack_require__(124).FrameReader;
+var FrameReader = __webpack_require__(125).FrameReader;
 
 /**
  * Transforms chunks, emits data objects {header, chunk}
@@ -27768,7 +27788,7 @@ exports.Parser = Parser;
 exports.ResultEmitter = ResultEmitter;
 
 /***/ }),
-/* 124 */
+/* 125 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28197,7 +28217,7 @@ FrameReader.prototype.parseSchemaChange = function () {
 exports.FrameReader = FrameReader;
 
 /***/ }),
-/* 125 */
+/* 126 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28377,7 +28397,7 @@ function generateGroup(initialValue) {
 module.exports = StreamIdStack;
 
 /***/ }),
-/* 126 */
+/* 127 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28519,7 +28539,7 @@ OperationState.prototype._swapCallbackAndInvoke = function (err, result, newCall
 module.exports = OperationState;
 
 /***/ }),
-/* 127 */
+/* 128 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28759,7 +28779,7 @@ RequestExecution.prototype._prepareAndRetry = function (queryId) {
 module.exports = RequestExecution;
 
 /***/ }),
-/* 128 */
+/* 129 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28768,7 +28788,7 @@ module.exports = RequestExecution;
 var util = __webpack_require__(0);
 var types = __webpack_require__(2);
 var utils = __webpack_require__(1);
-var MutableLong = __webpack_require__(129);
+var MutableLong = __webpack_require__(130);
 var Integer = types.Integer;
 
 // Murmur3 constants
@@ -29074,7 +29094,7 @@ exports.RandomTokenizer = RandomTokenizer;
 exports.ByteOrderedTokenizer = ByteOrderedTokenizer;
 
 /***/ }),
-/* 129 */
+/* 130 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29397,7 +29417,7 @@ MutableLong.prototype.toImmutable = function () {
 module.exports = MutableLong;
 
 /***/ }),
-/* 130 */
+/* 131 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29408,11 +29428,11 @@ var events = __webpack_require__(4);
 var types = __webpack_require__(2);
 var utils = __webpack_require__(1);
 var errors = __webpack_require__(3);
-var TableMetadata = __webpack_require__(131);
-var Aggregate = __webpack_require__(132);
-var SchemaFunction = __webpack_require__(133);
-var Index = __webpack_require__(134);
-var MaterializedView = __webpack_require__(135);
+var TableMetadata = __webpack_require__(132);
+var Aggregate = __webpack_require__(133);
+var SchemaFunction = __webpack_require__(134);
+var Index = __webpack_require__(135);
+var MaterializedView = __webpack_require__(136);
 /**
  * @module metadata/schemaParser
  * @ignore
@@ -30531,7 +30551,7 @@ function getByVersion(cc, udtResolver, version, currentInstance) {
 exports.getByVersion = getByVersion;
 
 /***/ }),
-/* 131 */
+/* 132 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30599,7 +30619,7 @@ util.inherits(TableMetadata, DataCollection);
 module.exports = TableMetadata;
 
 /***/ }),
-/* 132 */
+/* 133 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30663,7 +30683,7 @@ function Aggregate() {
 module.exports = Aggregate;
 
 /***/ }),
-/* 133 */
+/* 134 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30726,7 +30746,7 @@ function SchemaFunction() {
 module.exports = SchemaFunction;
 
 /***/ }),
-/* 134 */
+/* 135 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30861,7 +30881,7 @@ function getKindByName(name) {
 module.exports = Index;
 
 /***/ }),
-/* 135 */
+/* 136 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30903,7 +30923,7 @@ util.inherits(MaterializedView, DataCollection);
 module.exports = MaterializedView;
 
 /***/ }),
-/* 136 */
+/* 137 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31044,7 +31064,7 @@ function processQueue(q) {
 module.exports = EventDebouncer;
 
 /***/ }),
-/* 137 */
+/* 138 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31143,7 +31163,7 @@ ClientState.prototype.toString = function () {
 module.exports = ClientState;
 
 /***/ }),
-/* 138 */
+/* 139 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31156,10 +31176,10 @@ module.exports = ClientState;
 var baseProvider = __webpack_require__(51);
 exports.AuthProvider = baseProvider.AuthProvider;
 exports.Authenticator = baseProvider.Authenticator;
-exports.PlainTextAuthProvider = __webpack_require__(139);
+exports.PlainTextAuthProvider = __webpack_require__(140);
 
 /***/ }),
-/* 139 */
+/* 140 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31224,13 +31244,13 @@ PlainTextAuthenticator.prototype.evaluateChallenge = function (challenge, callba
 module.exports = PlainTextAuthProvider;
 
 /***/ }),
-/* 140 */
+/* 141 */
 /***/ (function(module, exports) {
 
 module.exports = {"name":"cassandra-driver","version":"3.3.0","description":"DataStax Node.js Driver for Apache Cassandra","author":"DataStax","keywords":["cassandra","cql","cql3","connection","pool","datastax","nosql","driver","database"],"license":"Apache-2.0","dependencies":{"long":"^2.2.0"},"devDependencies":{"mocha":">= 1.14.0","rewire":">= 2.1.0","mocha-jenkins-reporter":">= 0.1.9","mocha-appveyor-reporter":">= 0.2.1","mocha-multi":">= 0.8.0"},"repository":{"type":"git","url":"https://github.com/datastax/nodejs-driver.git"},"bugs":{"url":"https://groups.google.com/a/lists.datastax.com/forum/#!forum/nodejs-driver-user"},"scripts":{"test":"./node_modules/.bin/mocha test/unit -R spec -t 5000","ci":"./node_modules/.bin/mocha test/unit test/integration/short -R mocha-multi","ci_unit":"./node_modules/.bin/mocha test/unit -R mocha-multi","eslint":"eslint lib test --ignore-pattern '/lib/types/integer.js'"},"engines":{"node":">=0.10.0"}}
 
 /***/ }),
-/* 141 */
+/* 142 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31255,14 +31275,15 @@ class ConnectComponent extends _react2.default.Component {
             port: 0
         };
         this.handleInputChange = this.handleInputChange.bind(this);
-        this.handleClick = this.handleClick.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
     handleInputChange(e) {
         this.setState({
             [e.target.name]: e.target.value
         });
     }
-    handleClick() {
+    handleSubmit(e) {
+        e.preventDefault();
         this.props.onConnectClick(this.state.contactPoints, this.state.port);
     }
     render() {
@@ -31272,14 +31293,10 @@ class ConnectComponent extends _react2.default.Component {
             { className: 'connectComponent' },
             _react2.default.createElement(
                 'form',
-                null,
+                { onSubmit: this.handleSubmit },
                 _react2.default.createElement('input', { name: 'contactPoints', type: 'text', onChange: this.handleInputChange, value: this.state.contactPoints }),
                 _react2.default.createElement('input', { name: 'port', type: 'text', onChange: this.handleInputChange, value: this.state.port }),
-                _react2.default.createElement(
-                    'button',
-                    { type: 'button', onClick: this.handleClick },
-                    'Connect'
-                ),
+                _react2.default.createElement('input', { type: 'submit', value: 'Connect' }),
                 _react2.default.createElement(
                     'div',
                     { className: className },

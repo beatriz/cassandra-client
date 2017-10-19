@@ -1,5 +1,4 @@
 import React from 'react'
-// import PropTypes from 'prop-types'
 
 export interface ConnectComponentProps {
   connected: boolean
@@ -8,7 +7,12 @@ export interface ConnectComponentProps {
   onConnectClick: (contactPoints, port) => {}
 }
 
-export class ConnectComponent extends React.Component<ConnectComponentProps, {contactPoints, port}> {
+export interface ConnectComponentState {
+  contactPoints: string
+  port: number
+}
+
+export class ConnectComponent extends React.Component<ConnectComponentProps, ConnectComponentState> {
   constructor(props) {
     super(props)
     this.state = {
@@ -17,7 +21,7 @@ export class ConnectComponent extends React.Component<ConnectComponentProps, {co
     }
 
     this.handleInputChange = this.handleInputChange.bind(this)
-    this.handleClick = this.handleClick.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   handleInputChange(e) {
@@ -26,7 +30,8 @@ export class ConnectComponent extends React.Component<ConnectComponentProps, {co
     })
   }
 
-  handleClick() {
+  handleSubmit(e) {
+    e.preventDefault()
     this.props.onConnectClick(this.state.contactPoints, this.state.port)
   }
 
@@ -34,10 +39,10 @@ export class ConnectComponent extends React.Component<ConnectComponentProps, {co
     const className = this.props.isConnecting ? 'text-warning' : this.props.connected ? 'text-success' : 'text-danger'
     return(
       <div className='connectComponent'>
-        <form>
+        <form onSubmit={this.handleSubmit}>
           <input name='contactPoints' type='text' onChange={this.handleInputChange} value={this.state.contactPoints} />
           <input name='port' type='text' onChange={this.handleInputChange} value={this.state.port} />
-          <button type='button' onClick={this.handleClick}>Connect</button>
+          <input type='submit' value='Connect' />
           <div className={className}>{this.props.isConnecting ? 'connecting' : this.props.connected ? 'Connected' : this.props.errorMsg}</div>
         </form>
       </div>

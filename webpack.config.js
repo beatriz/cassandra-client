@@ -40,7 +40,8 @@ const commonConfig = {
   },
   node: {
     __dirname: false
-  }
+  },
+  devtool: 'source-map'
 }
 
 module.exports = [
@@ -53,7 +54,7 @@ module.exports = [
   Object.assign(
     {
       target: 'electron-renderer',
-      entry: { gui: './src/gui.tsx' }
+      entry: { renderer: './src/renderer.tsx' }
     },
     commonConfig)
 ]

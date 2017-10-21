@@ -69,13 +69,34 @@
 
 "use strict";
 
-/// <reference types="jest" />
 
-describe('Host', () => {
-    test('PlaceHolderPassingTest', () => {
-        expect(1 + 2).toBe(3);
+var _electron = __webpack_require__(1);
+
+let mainWindow;
+function onReady() {
+    mainWindow = new _electron.BrowserWindow({
+        width: 800,
+        height: 600
     });
-});
+    //  if (process.env.NODE_ENV === 'development') {
+    // Make sure you have the FULL path here or it won't work
+    _electron.BrowserWindow.addDevToolsExtension('/Users/bmagalhaes/Library/Application Support/Google/Chrome/Default/Extensions/fmkadmapgofadopljbjfkapdkoienihi/2.5.2_0');
+    _electron.BrowserWindow.addDevToolsExtension('/Users/bmagalhaes/Library/Application Support/Google/Chrome/Default/Extensions/lmhkpmbekcpmknklioeibfkpmmfibljd/2.15.1_0');
+    // }
+    const fileName = `file://${__dirname}/index.html`;
+    mainWindow.loadURL(fileName);
+    mainWindow.on('close', () => _electron.app.quit());
+}
+_electron.app.on('ready', () => onReady());
+_electron.app.on('window-all-closed', () => _electron.app.quit());
+console.log(`Electron Version ${_electron.app.getVersion()}`);
+
+/***/ }),
+/* 1 */
+/***/ (function(module, exports) {
+
+module.exports = require("electron");
 
 /***/ })
 /******/ ]);
+//# sourceMappingURL=main.js.map

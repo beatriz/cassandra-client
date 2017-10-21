@@ -9,6 +9,8 @@
 // be executed in the renderer process for that window.
 // All of the Node.js APIs are available in this process.
 import * as cassandra from 'cassandra-driver'
+// import * as React from 'react';
+// import * as ReactDOM from 'react-dom';
 // import * as store from 'electron-json-storage'
 // import * as electron from 'electron'
 // import * as path from 'path'
@@ -103,9 +105,3 @@ function createTableBody (res: any) {
   }
   return body + '</tbody>'
 }
-
-// class Connection {
-//   contactPoints: string[]
-//   port: number
-//   keyspace: string
-// }

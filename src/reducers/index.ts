@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux'
-import { ConnectionReducer } from './cassandra'
+import { ConnectionReducer } from './connection'
 
 const cassandraApp = combineReducers({
   connection: ConnectionReducer

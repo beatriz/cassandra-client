@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
-import { doConnect, Action } from '../actions/renderer'
-import { ConnectComponent } from '../components/connectComponent'
+import { doConnect, Action } from '../actions/connection'
+import { ConnectComponent } from '../components/connection'
 import { Dispatch } from 'redux'
 
 function mapStateToProps(state) {

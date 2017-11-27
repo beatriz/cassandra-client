@@ -4,13 +4,9 @@
     <input type="text" v-model="contactPoints" />
     <label>Port</label>
     <input type="text" v-model="port" />
-
-    <div v-if="isConnecting">Connecting</div>
-    <div v-else>
-      <div v-if="connected">Connected</div>
-      <div v-else>{{connectionError}}</div>
-    </div>
     <button v-on:click="connect">Connect</button>
+
+    <div v-bind:class="[textClass]">{{ status }}</div>
   </div>
 </template>
 
@@ -22,23 +18,23 @@ export default {
     return {
       contactPoints: '',
       port: '',
-      isConnecting: false,
-      connected: false,
-      connectionError: ''
+      status: '',
+      textClass: ''
     }
   },
   methods: {
     connect () {
-      this.isConnecting = true
+      this.status = 'Connecting'
+      this.textClass = 'text-warning'
+
       cassandra.connect(this.contactPoints, this.port)
         .then(() => {
-          this.isConnecting = false
-          this.connected = true
+          this.status = 'Connected'
+          this.textClass = 'text-success'
         })
         .catch(err => {
-          this.isConnecting = false
-          this.connected = false
-          this.connectionError = err.message
+          this.textClass = 'text-danger'
+          this.status = err.message
         })
     }
   }

@@ -1,16 +1,16 @@
 <template>
   <div id="app">
-    <landing-page></landing-page>
+    <connection></connection>
   </div>
 </template>
 
 <script>
-  import LandingPage from '@/components/LandingPage'
+  import Connection from '@/components/Connection'
 
   export default {
     name: 'cassandra-client',
     components: {
-      LandingPage
+      Connection
     }
   }
 </script>

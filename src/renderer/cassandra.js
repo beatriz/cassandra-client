@@ -11,3 +11,7 @@ export function connect (contactPoints, port) {
     })
   })
 }
+
+export function getKeyspaces () {
+  return connection.execute('select keyspace_name from system_schema.keyspaces')
+}

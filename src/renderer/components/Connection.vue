@@ -25,15 +25,15 @@ export default {
   methods: {
     connect () {
       this.status = 'Connecting'
-      this.textClass = 'text-warning'
+      this.textClass = 'uk-text-warning'
 
       cassandra.connect(this.contactPoints, this.port)
         .then(() => {
           this.status = 'Connected'
-          this.textClass = 'text-success'
+          this.textClass = 'uk-text-success'
         })
         .catch(err => {
-          this.textClass = 'text-danger'
+          this.textClass = 'uk-text-danger'
           this.status = err.message
         })
     }

@@ -1,16 +1,16 @@
 <template>
-  <div id="app">
-    <connection></connection>
+  <div id="app" uk-grid>
+    <sidebar></sidebar>
   </div>
 </template>
 
 <script>
-  import Connection from '@/components/Connection'
+  import Sidebar from '@/components/Sidebar'
 
   export default {
     name: 'cassandra-client',
     components: {
-      Connection
+      Sidebar
     }
   }
 </script>

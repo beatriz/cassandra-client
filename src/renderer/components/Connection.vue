@@ -25,7 +25,7 @@ const cassandra = require('../cassandra')
 const UIKit = require('uikit')
 
 export default {
-  name: 'sidebar',
+  name: 'connection',
   data () {
     return {
       contactPoints: '',
@@ -43,6 +43,7 @@ export default {
         .then(() => {
           this.status = 'Connected'
           this.textClass = 'uk-text-success'
+          this.$emit('connected')
           UIKit.modal('#connection-modal').hide()
         })
         .catch(err => {

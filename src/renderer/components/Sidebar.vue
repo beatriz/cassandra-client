@@ -1,5 +1,5 @@
 <template>
-  <div id="sidebar" class="uk-width-1-4">
+  <div id="sidebar" class="uk-width-1-5">
     <connection v-on:connected="getKeyspaces"></connection>
 
     <ul class="uk-nav-default uk-nav-parent-icon" uk-nav>

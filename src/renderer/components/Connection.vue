@@ -1,6 +1,6 @@
 <template>
   <div class="connection">
-    <button v-on:click="openModal" type="button">Connect</button>
+    <button class="uk-button uk-button-secondary" v-on:click="openModal" type="button">Connect</button>
 
     <div id="connection-modal" uk-modal>
       <div class="uk-modal-dialog"> 

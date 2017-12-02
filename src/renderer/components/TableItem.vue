@@ -1,6 +1,8 @@
 <template>
   <li class="uk-parent">
-      <a href="#" v-on:click="getInfo">{{table}} ({{type}})</a>
+      <a href="#" v-on:click="getInfo">
+        <span class="uk-badge" v-bind:style="{ background:badgeColor}">{{type}}</span> {{table}}
+      </a>
       <ul class="uk-nav-sub" uk-nav>
           <li v-for="col in columns" :key="col.column_name">
             <a href="#">{{col.column_name}}</a>
@@ -21,7 +23,8 @@ export default {
   },
   data () {
     return {
-      columns: []
+      columns: [],
+      badgeColor: this.type === 'T' ? '#ffa500' : '#1e87f0'
     }
   },
   methods: {

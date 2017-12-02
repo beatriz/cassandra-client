@@ -22,6 +22,11 @@ export function getKeyspaceInfo (keyspace) {
   return executePreparedQuery('system_schema', query, [keyspace])
 }
 
+export function getTableInfo (keyspace, table) {
+  const query = 'select * from columns where keyspace_name=? and table_name=?'
+  return executePreparedQuery('system_schema', query, [keyspace, table])
+}
+
 function executePreparedQuery (keyspace, query, params) {
   client.keyspace = keyspace
   return client.execute(query, params, {prepare: true})

@@ -17,12 +17,17 @@ export function getKeyspaces () {
   return client.execute('select keyspace_name from keyspaces')
 }
 
-export function getKeyspaceInfo (keyspace) {
+export function getTables (keyspace) {
   const query = 'select keyspace_name, table_name from tables where keyspace_name = ?'
   return executePreparedQuery('system_schema', query, [keyspace])
 }
 
-export function getTableInfo (keyspace, table) {
+export function getViews (keyspace) {
+  const query = 'select * from views where keyspace_name = ?'
+  return executePreparedQuery('system_schema', query, [keyspace])
+}
+
+export function getColumns (keyspace, table) {
   const query = 'select * from columns where keyspace_name=? and table_name=?'
   return executePreparedQuery('system_schema', query, [keyspace, table])
 }

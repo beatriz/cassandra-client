@@ -3,18 +3,30 @@
     <button v-on:click="openModal" type="button">Connect</button>
 
     <div id="connection-modal" uk-modal>
-      <div class="uk-modal-dialog uk-modal-body"> 
-        <label>Contact points</label>
-        <input type="text" v-model="contactPoints" />
-        <label>Port</label>
-        <input type="text" v-model="port" />
+      <div class="uk-modal-dialog"> 
+          <button class="uk-modal-close-default" type="button" uk-close></button>
+          <form class="uk-form-stacked" v-on:submit="connect">
+            <div class="uk-modal-body" uk-grid>
+              <div>
+                <label class="uk-form-label">Contact points</label>
+                <div class="uk-form-controls">
+                  <input class="uk-input" type="text" v-model="contactPoints" />
+                </div>
+              </div>
+              <div>
+                <label class="uk-form-label">Port</label>
+                <div class="uk-form-controls">
+                  <input class="uk-input" type="text" v-model="port" />
+                </div>
+              </div>
+            <div v-bind:class="[textClass]">{{ status }}</div>
+            </div>
 
-        <div v-bind:class="[textClass]">{{ status }}</div>
-
-        <p class="uk-text-right">
-            <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
-            <button class="uk-button uk-button-primary" type="button" v-on:click="connect">Connect</button>
-        </p>
+            <div class="uk-modal-footer uk-text-right">
+                <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
+                <input class="uk-button uk-button-primary" type="submit" v-on:click="connect" value="Connect" />
+            </div>
+        </form>
       </div>
     </div>
   </div>
@@ -35,7 +47,8 @@ export default {
     }
   },
   methods: {
-    connect () {
+    connect (e) {
+      e.preventDefault()
       this.status = 'Connecting'
       this.textClass = 'uk-text-warning'
 

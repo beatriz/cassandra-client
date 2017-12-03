@@ -12,6 +12,10 @@ export function connect (contactPoints, port) {
   })
 }
 
+export function executeQuery (query) {
+  return client.execute(query)
+}
+
 export function getKeyspaces () {
   client.keyspace = 'system_schema'
   return client.execute('select keyspace_name from keyspaces')

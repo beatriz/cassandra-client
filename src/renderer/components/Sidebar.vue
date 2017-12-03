@@ -1,5 +1,5 @@
 <template>
-  <div id="sidebar" class="uk-width-1-5">
+  <div id="sidebar">
     <connection v-on:connected="getKeyspaces"></connection>
 
     <ul class="uk-nav-default uk-nav-parent-icon" uk-nav>
@@ -7,7 +7,6 @@
     </ul>
   </div>
 </template>
-
 
 <script>
 import Connection from '@/components/Connection'

@@ -35,6 +35,7 @@
 <script>
 const cassandra = require('../cassandra')
 const UIKit = require('uikit')
+const storage = require('@/jsonStorage')
 
 export default {
   name: 'connection',
@@ -51,6 +52,7 @@ export default {
       e.preventDefault()
       this.status = 'Connecting'
       this.textClass = 'uk-text-warning'
+      storage.setConnection(this.contactPoints, this.port)
 
       cassandra.connect(this.contactPoints, this.port)
         .then(() => {
@@ -65,6 +67,12 @@ export default {
         })
     },
     openModal () {
+      storage.getConnection()
+        .then(conn => {
+          this.contactPoints = conn.contactPoints
+          this.port = conn.port
+        })
+        .catch(err => console.err(err))
       UIKit.modal('#connection-modal').show()
     }
   }

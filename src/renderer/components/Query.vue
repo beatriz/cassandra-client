@@ -4,6 +4,9 @@
       <button v-on:click="makeQuery" class="uk-icon-button" uk-icon="icon: play"></button>
     </div>
     <textarea class="uk-textarea" v-model="query"></textarea>
+    <div v-if="errorMsg" class="uk-text-danger">
+      {{errorMsg}}
+    </div>
     <div>
       <div v-if="result.rows">
         <table class="uk-table uk-table-striped">
@@ -39,14 +42,15 @@ export default {
   data () {
     return {
       query: [],
-      result: Object
+      result: Object,
+      errorMsg: undefined
     }
   },
   methods: {
     makeQuery () {
       cassandra.executeQuery(this.query)
-        .then(res => { this.result = res })
-        .catch(err => console.error(err))
+        .then(res => { console.log(res); this.result = res; this.errorMsg = undefined })
+        .catch(err => { this.errorMsg = err.message; this.result = [] })
     }
   }
 }

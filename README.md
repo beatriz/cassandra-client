@@ -1,6 +1,8 @@
 # cassandra-client
 
-> An electron-vue project
+> A client to query cassandra
+
+[![Build Status](https://travis-ci.org/mbeatrizmagalhaes/cassandra-client.svg?branch=master)](https://travis-ci.org/mbeatrizmagalhaes/cassandra-client)  [![Build status](https://ci.appveyor.com/api/projects/status/5od2rodtikows90r?svg=true)](https://ci.appveyor.com/project/mbeatrizmagalhaes/cassandra-client)
 
 #### Build Setup
 

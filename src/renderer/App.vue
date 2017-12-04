@@ -6,6 +6,8 @@
 </template>
 
 <script>
+  import 'uikit/dist/js/uikit.min.js'
+  import 'uikit/dist/js/uikit-icons.min.js'
   import Sidebar from '@/components/Sidebar'
   import Query from '@/components/Query'
 
@@ -20,4 +22,5 @@
 
 <style>
   /* CSS */
+  @import '~uikit/dist/css/uikit.min.css';
 </style>

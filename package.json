@@ -1,6 +1,6 @@
 {
   "name": "cassandra-client",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "author": "Beatriz Magalhães <mbeatrizmagalhaes@gmail.com>",
   "description": "An electron-vue project",
   "license": null,
